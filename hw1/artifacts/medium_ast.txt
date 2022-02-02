@@ -1,142 +1,131 @@
-Module(
-  body=[FunctionDef(
+FunctionDef(
     name='fib',
     args=arguments(
-      posonlyargs=[],
-      args=[arg(
-        arg='n',
-        annotation=None,
-        type_comment=None)],
-      vararg=None,
-      kwonlyargs=[],
-      kw_defaults=[],
-      kwarg=None,
-      defaults=[]),
+        posonlyargs=[],
+        args=[arg(arg='n', annotation=None, type_comment=None)],
+        vararg=None,
+        kwonlyargs=[],
+        kw_defaults=[],
+        kwarg=None,
+        defaults=[],
+    ),
     body=[
-      If(
-        test=Compare(
-          left=Name(
-            id='n',
-            ctx=Load()),
-          ops=[Lt()],
-          comparators=[Constant(
-            value=0,
-            kind=None)]),
-        body=[Return(value=Constant(
-          value=None,
-          kind=None))],
-        orelse=[]),
-      Assign(
-        targets=[Name(
-          id='fibs',
-          ctx=Store())],
-        value=BinOp(
-          left=List(
-            elts=[Constant(
-              value=0,
-              kind=None)],
-            ctx=Load()),
-          op=Mult(),
-          right=BinOp(
-            left=Name(
-              id='n',
-              ctx=Load()),
-            op=Add(),
-            right=Constant(
-              value=1,
-              kind=None))),
-        type_comment=None),
-      Assign(
-        targets=[Subscript(
-          value=Name(
-            id='fibs',
-            ctx=Load()),
-          slice=Index(value=Constant(
-            value=0,
-            kind=None)),
-          ctx=Store())],
-        value=Constant(
-          value=0,
-          kind=None),
-        type_comment=None),
-      Assign(
-        targets=[Subscript(
-          value=Name(
-            id='fibs',
-            ctx=Load()),
-          slice=Index(value=Constant(
-            value=1,
-            kind=None)),
-          ctx=Store())],
-        value=Constant(
-          value=1,
-          kind=None),
-        type_comment=None),
-      For(
-        target=Name(
-          id='i',
-          ctx=Store()),
-        iter=Call(
-          func=Name(
-            id='range',
-            ctx=Load()),
-          args=[
-            Constant(
-              value=2,
-              kind=None),
-            BinOp(
-              left=Name(
-                id='n',
-                ctx=Load()),
-              op=Add(),
-              right=Constant(
-                value=1,
-                kind=None))],
-          keywords=[]),
-        body=[Assign(
-          targets=[Subscript(
-            value=Name(
-              id='fibs',
-              ctx=Load()),
-            slice=Index(value=Name(
-              id='i',
-              ctx=Load())),
-            ctx=Store())],
-          value=BinOp(
-            left=Subscript(
-              value=Name(
-                id='fibs',
-                ctx=Load()),
-              slice=Index(value=BinOp(
-                left=Name(
-                  id='i',
-                  ctx=Load()),
-                op=Sub(),
-                right=Constant(
-                  value=1,
-                  kind=None))),
-              ctx=Load()),
-            op=Add(),
-            right=Subscript(
-              value=Name(
-                id='fibs',
-                ctx=Load()),
-              slice=Index(value=BinOp(
-                left=Name(
-                  id='i',
-                  ctx=Load()),
-                op=Sub(),
-                right=Constant(
-                  value=2,
-                  kind=None))),
-              ctx=Load())),
-          type_comment=None)],
-        orelse=[],
-        type_comment=None),
-      Return(value=Name(
-        id='fibs',
-        ctx=Load()))],
+        If(
+            test=Compare(
+                left=Name(id='n', ctx=Load()),
+                ops=[Lt()],
+                comparators=[Constant(value=0, kind=None)],
+            ),
+            body=[
+                Return(
+                    value=Constant(value=None, kind=None),
+                ),
+            ],
+            orelse=[],
+        ),
+        Assign(
+            targets=[Name(id='fibs', ctx=Store())],
+            value=BinOp(
+                left=List(
+                    elts=[Constant(value=0, kind=None)],
+                    ctx=Load(),
+                ),
+                op=Mult(),
+                right=BinOp(
+                    left=Name(id='n', ctx=Load()),
+                    op=Add(),
+                    right=Constant(value=1, kind=None),
+                ),
+            ),
+            type_comment=None,
+        ),
+        Assign(
+            targets=[
+                Subscript(
+                    value=Name(id='fibs', ctx=Load()),
+                    slice=Index(
+                        value=Constant(value=0, kind=None),
+                    ),
+                    ctx=Store(),
+                ),
+            ],
+            value=Constant(value=0, kind=None),
+            type_comment=None,
+        ),
+        Assign(
+            targets=[
+                Subscript(
+                    value=Name(id='fibs', ctx=Load()),
+                    slice=Index(
+                        value=Constant(value=1, kind=None),
+                    ),
+                    ctx=Store(),
+                ),
+            ],
+            value=Constant(value=1, kind=None),
+            type_comment=None,
+        ),
+        For(
+            target=Name(id='i', ctx=Store()),
+            iter=Call(
+                func=Name(id='range', ctx=Load()),
+                args=[
+                    Constant(value=2, kind=None),
+                    BinOp(
+                        left=Name(id='n', ctx=Load()),
+                        op=Add(),
+                        right=Constant(value=1, kind=None),
+                    ),
+                ],
+                keywords=[],
+            ),
+            body=[
+                Assign(
+                    targets=[
+                        Subscript(
+                            value=Name(id='fibs', ctx=Load()),
+                            slice=Index(
+                                value=Name(id='i', ctx=Load()),
+                            ),
+                            ctx=Store(),
+                        ),
+                    ],
+                    value=BinOp(
+                        left=Subscript(
+                            value=Name(id='fibs', ctx=Load()),
+                            slice=Index(
+                                value=BinOp(
+                                    left=Name(id='i', ctx=Load()),
+                                    op=Sub(),
+                                    right=Constant(value=1, kind=None),
+                                ),
+                            ),
+                            ctx=Load(),
+                        ),
+                        op=Add(),
+                        right=Subscript(
+                            value=Name(id='fibs', ctx=Load()),
+                            slice=Index(
+                                value=BinOp(
+                                    left=Name(id='i', ctx=Load()),
+                                    op=Sub(),
+                                    right=Constant(value=2, kind=None),
+                                ),
+                            ),
+                            ctx=Load(),
+                        ),
+                    ),
+                    type_comment=None,
+                ),
+            ],
+            orelse=[],
+            type_comment=None,
+        ),
+        Return(
+            value=Name(id='fibs', ctx=Load()),
+        ),
+    ],
     decorator_list=[],
     returns=None,
-    type_comment=None)],
-  type_ignores=[])
+    type_comment=None,
+)
