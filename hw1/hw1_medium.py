@@ -1,6 +1,4 @@
-import hw1_easy
-import inspect
 import ast
-import astunparse
+import astpretty
 
-print(astunparse.dump(ast.parse(inspect.getsource(hw1_easy.fib))))
+astpretty.pprint(ast.parse(open('hw1_easy.py').read()).body[0], show_offsets=False)
