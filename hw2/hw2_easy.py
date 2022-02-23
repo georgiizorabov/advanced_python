@@ -1,4 +1,3 @@
-
 def gen_begin():
     return """
 \\documentclass{article}
@@ -21,6 +20,7 @@ def gen_body(arr):
 
 def make_tex(arr):
     return gen_begin() + gen_body(arr) + gen_end()
+
 def text_to_list(inp):
     arr = [i for i in inp .split()]
     arr = [arr[i:i + 5] for i in range(0, len(arr), 5)]
