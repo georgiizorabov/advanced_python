@@ -20,7 +20,7 @@ class HashMatrix(Matrix, HashMixin):
         if (hs, hm) in self.__hashed:
             return self.__hashed[(hs, hm)]
         ans = super().__matmul__(m)
-        self.__hashed[ans] = ans
+        self.__hashed[(hs, hm)] = ans
         return ans
 
 
