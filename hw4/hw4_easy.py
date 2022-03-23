@@ -1,6 +1,6 @@
-import concurrent
 import time
-from concurrent.futures import ThreadPoolExecutor
+from threading import Thread
+from multiprocessing import Process
 
 
 def fib(x):
@@ -14,26 +14,40 @@ def fib(x):
     return fibs[x]
 
 
-def runThreads(n):
+def runSimple(n):
     start = time.time()
-    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-        fs = []
-        for i in range(10):
-            fs.append(executor.submit(fib, n))
-        return f"Threads: {time.time() - start}\n"
+    for _ in range(10):
+        fib(n)
+    return f"Simple: {time.time() - start}\n"
+
+
+def runThreads(n):
+    thds = []
+    start = time.time()
+    for _ in range(10):
+        t = Thread(target=fib, args=(n,))
+        thds.append(t)
+        t.start()
+    for thd in thds:
+        thd.join()
+    return f"Threads: {time.time() - start}\n"
 
 
 def runProc(n):
+    pcs = []
     start = time.time()
-    with concurrent.futures.ProcessPoolExecutor(max_workers=10) as executor:
-        fs = []
-        for i in range(10):
-            fs.append(executor.submit(fib, n))
-        return f"Processes: {time.time() - start}\n"
+    for _ in range(10):
+        t = Process(target=fib, args=(n,))
+        pcs.append(t)
+        t.start()
+    for pc in pcs:
+        pc.join()
+    return f"Processes: {time.time() - start}\n"
 
 
 if __name__ == "__main__":
-    w = int(1e5)
+    w = int(10 ** 5)
     with open("artifacts/easy", 'w') as f:
+        f.write(runSimple(w))
         f.write(runThreads(w))
         f.write(runProc(w))
